@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { AnimatedBackground } from "@/components/ui/animated-background"
 import { CustomCursor } from "@/components/custom-cursor"
+import { EntryShell } from "@/components/entry-shell"
 import { LanguageProvider } from "@/contexts/language-context"
 
 const syne = Syne({
@@ -74,7 +75,9 @@ export default function RootLayout({
         <LanguageProvider>
           <AnimatedBackground />
           <CustomCursor />
-          <main className="relative z-10">{children}</main>
+          <EntryShell>
+            <main className="relative z-10">{children}</main>
+          </EntryShell>
         </LanguageProvider>
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
